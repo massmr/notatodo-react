@@ -1,10 +1,7 @@
 import * as React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import './App.css'
-
-library.add(faGithub);
+import Header from './Header_comp/Header.jsx'
+import MainWrapper from './MainWrapper/MainWrapper.jsx'
 
 const tasksList = [
   {
@@ -51,68 +48,7 @@ function App() {
   );
 };
 
-const Header = () => (
-  <>
-    <header>
-      <div>
-        <h1 className="logo">!TODO</h1>
-      </div>
-      <nav>
-        <a target="blank" href="https://github.com">
-          <FontAwesomeIcon className="nav-icon" icon="fa-brands fa-github" />
-           <span>Repo</span>
-        </a>
-      </nav>
-    </header>
-  </>
-);
 
-const MainWrapper = ({ activeCategory, handleButtonClick, tasks }) => (
-  <>
 
-    <section>
-
-      <div className="category-container">
-        <div
-          onClick={() => handleButtonClick('todo')} 
-          className={`category 
-            ${activeCategory === 'todo' ? 'activeButton' : ''}`}>
-          <p>TODO</p>
-        </div>
-
-        <div 
-          onClick={() => handleButtonClick('done')} 
-          className={`category 
-            ${activeCategory === 'done' ? 'activeButton' : ''}`}>
-          <p>DONE</p>
-        </div>
-      </div>
-
-    </section>
-
-    <section className="cards-container">
-      
-      <div className="cards-wrapper">
-
-        <div className="card todo-card">
-          <ul>
-            {tasks.map((item, index) => (
-              <li key={index}>
-                <span>{item.task}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="card done-card">
-          <ul>
-          </ul>
-        </div>
-      
-      </div>
-    </section>
-  
-  </>
-);
 
 export default App
