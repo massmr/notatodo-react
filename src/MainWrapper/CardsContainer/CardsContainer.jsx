@@ -1,22 +1,22 @@
 import './CardsContainer.css'
 import React, { useState } from 'react';
 
-const CardsContainer = ({ tasks, activeCategory }) => {
+const CardsContainer = ({ tasks,
+  newTask,
+  handleInputChange, 
+  handleAddTask,
+  handleInputFocus,
+  handleInputBlur,
+  activeCategory,
+  isFocused }) => {
 
-  const [isFocused, setIsFocused] = React.useState(false);
-
-  const handleInputFocus = () => {
-    setIsFocused(true);
-  };
-  const handleInputBlur = () => {
-    setIsFocused(false);
-  };
-
-  //takes all tasks and return a new arr filtered with item.done
+    //takes all tasks and return a new arr filtered with item.done
   const filterTasks = (tasks, category) => {
-    return tasks.filter((item) => {
-      return category === 'todo' ? item.done === false : item.done === true;
-    })
+    if (tasks.length !== 0) {
+      return tasks.filter((item) => {
+        return category === 'todo' ? item.done === false : item.done === true;
+      })
+    };
   };
   
   const todoTasks = filterTasks(tasks, 'todo');
@@ -44,8 +44,19 @@ const CardsContainer = ({ tasks, activeCategory }) => {
           >
             <label htmlFor="todo-input">Add a todo</label>
             <div className="textZone-wrapper">
-              <input type="text" id="todo-input" name="todo-input"/>
-              <input type="submit" value="Post" id="submit-todo-input"/>
+              <input 
+                type="text" 
+                id="todo-input" 
+                name="todo-input"
+                value={newTask}
+                onChange={handleInputChange}
+              />
+              <input 
+                type="submit" 
+                value="Post" 
+                id="submit-todo-input"
+                onClick={handleAddTask}
+              />
             </div>
           </div>
         </div>

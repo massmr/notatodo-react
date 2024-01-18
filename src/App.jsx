@@ -1,31 +1,57 @@
 import * as React from 'react'
+import { useState, useEffect } from 'react';
 import './App.css'
 import Header from './Header_comp/Header.jsx'
 import MainWrapper from './MainWrapper/MainWrapper.jsx'
 
-const tasksList = [
+
+const previewTask = [
   {
-    task: "Code a foobar game",
-    date: 10,
+    task: "Log-in to the App",
     done: false,
   },
-  {
-    task: "Go drink a beer",
-    date: 1,
-    done: true,
-  },
-  {
-    task: "Go on holidays",
-    date: 35,
-    done: false,
-  }
 ];
 
 function App() {
-  const [tasks, setTasks] = React.useState(tasksList);
+  const [tasks, setTasks] = React.useState(previewTask);
+  const [newTask, setNewTask] = React.useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:5500/tasks')
+      .then(response => response.json())
+      .then((data) => setTasks(data))
+      .catch((error) => {
+        console.log('Error fetching data:', error);
+      });
+  }, []);
+
+  const handleInputChange = (e) => {
+    setNewTask(e.target.value);
+  }
+  
+  const handleAddTask = () => {
+    if (newTask.trim() !== '') {
+      const newTaskObject = {
+        task: newTask,
+        done: false,
+      } 
+      setTasks([...tasks, newTaskObject]);
+      setNewTask('');
+      setIsFocused(false);
+    }
+  }
+
+  const [isFocused, setIsFocused] = React.useState(false);
+  const handleInputFocus = () => {
+    setIsFocused(true);
+  };
+  const handleInputBlur = () => {
+    setIsFocused(false);
+  };
+
+
 
   const [activeCategory, setActiveCategory] = React.useState('todo');
-  
   //callback handler
   const handleButtonClick = (button) => {
     setActiveCategory(button);
@@ -39,8 +65,14 @@ function App() {
         
         <MainWrapper
           activeCategory={activeCategory}
-          handleButtonClick={handleButtonClick} 
+          isFocused={isFocused}
+          handleInputFocus={handleInputFocus}
+          handleInputBlur={handleInputBlur}
+          handleAddTask={handleAddTask}
+          handleButtonClick={handleButtonClick}
+          handleInputChange={handleInputChange}
           tasks={tasks}
+          newTask={newTask}
         />
       
       </section>
