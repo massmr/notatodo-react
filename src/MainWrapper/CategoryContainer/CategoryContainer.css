@@ -34,3 +34,9 @@
 .activeButton > p {
   color: #4D724D;
 } 
+
+@media (max-width: 440px) {
+  .category-container {
+    margin-top: 3rem;
+  }
+}

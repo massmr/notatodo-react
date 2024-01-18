@@ -10,7 +10,10 @@ const MainWrapper = ({ activeCategory, handleButtonClick, tasks }) => (
       handleButtonClick={handleButtonClick}
     />
     
-    <CardsContainer tasks={tasks} />
+    <CardsContainer 
+      tasks={tasks} 
+      activeCategory={activeCategory} 
+    />
      
   </>
 );

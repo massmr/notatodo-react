@@ -66,8 +66,16 @@
   overflow: auto;
 }
 
-/*gap filler is actually not used
-.gap-filler {
-  background-color: #8DB48E;
+@media (max-width: 440px) {
+  .cards-wrapper {
+    margin: 0;
+    padding: 0 ;
+    border: none;
+  }
+  .card > ul {
+    gap: 10px;
+  }
+  .card > ul > li {
+    font-size: 15px;
+  }
 }
-*/
