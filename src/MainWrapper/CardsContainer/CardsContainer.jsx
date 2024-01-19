@@ -1,5 +1,7 @@
 import './CardsContainer.css'
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import InputTodo from './InputTodo/InputTodo.jsx'
+import Card from './Card/Card.jsx'
 
 const CardsContainer = ({ tasks,
   newTask,
@@ -21,61 +23,40 @@ const CardsContainer = ({ tasks,
   
   const todoTasks = filterTasks(tasks, 'todo');
   const doneTasks = filterTasks(tasks, 'done');
-
+  const todoCategory = 'todo-card';
+  const doneCategory = 'done-card';
+  
   return( 
     <section className="cards-container">
       
       <div className="cards-wrapper">
         
-        <div className="card todo-card" value="todo">
-          <div className="items-wrapper">
-            <ul>
-              {todoTasks.map((item, index) => (
-                <li key={index}>
-                  <span>{item.task}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div 
-            className={`input-wrapper ${isFocused ? 'input-wrapper-focus' : ''}`}
-            onFocus={handleInputFocus}
-            onBlur={handleInputBlur}
-          >
-            <label htmlFor="todo-input">Add a todo</label>
-            <div className="textZone-wrapper">
-              <input 
-                type="text" 
-                id="todo-input" 
-                name="todo-input"
-                value={newTask}
-                onChange={handleInputChange}
-              />
-              <input 
-                type="submit" 
-                value="Post" 
-                id="submit-todo-input"
-                onClick={handleAddTask}
-              />
-            </div>
-          </div>
-        </div>
+        <Card 
+          category={todoCategory}
+          tasks={todoTasks}
+          
+          inputComponent={
+            <InputTodo
+              handleAddTask={handleAddTask}
+              handleInputChange={handleInputChange}
+              handleInputFocus={handleInputFocus}
+              handleInputBlur={handleInputBlur}
+              isFocused={isFocused}
+              newTask={newTask}
+            />
+          }
+        />
         
-        <div className="card done-card" value="done">
-          <div className="items-wrapper">
-            <ul>
-              {doneTasks.map((item, index) => (
-                <li key={index}>
-                  <span>{item.task}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <Card 
+          category={doneCategory} 
+          tasks={doneTasks} 
+        />
       
       </div>
+
     </section>
   );
 };
+
 
 export default CardsContainer
