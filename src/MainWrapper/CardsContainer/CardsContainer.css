@@ -5,7 +5,7 @@
   max-width: 1240px;
 }
 .cards-wrapper {
-  display: flex;f
+  display: flex;
   flex-flow: row nowrap;
   gap: 20px;
   overflow: auto;
@@ -16,12 +16,17 @@
   border-left: 10px solid #4D724D;
 }
 
-@media (max-width: 440px) {
+@media (max-width: 768px) {
   .cards-wrapper {
-    margin: 0;
-    padding: 0 ;
-    border: none;
+    margin: 0 ;
+    padding: 20px 0;
   }
 }
 
-
+@media (max-width: 440px) {
+  .cards-wrapper 
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}

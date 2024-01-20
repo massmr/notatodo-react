@@ -1,3 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+library.add(faTrash);
+
+
 import './Card.css'
 
 const Card = ({ 
@@ -9,11 +15,9 @@ const Card = ({
     <div className={`card ${category}`} value="todo">
       <div className="items-wrapper">
         <ul>
-          {tasks.map((item, index) => (
-            <li key={index}>
-              <span>{item.task}</span>
-            </li>
-          ))}
+      
+          <Items tasks={tasks} />
+
         </ul>
       </div>
       
@@ -22,4 +26,19 @@ const Card = ({
   );
 };
 
+const Items = ({ tasks }) => {
+   return(
+    <>
+       {tasks.map((item, index) => (
+        <li key={index}>
+          <span>{item.task}</span>
+
+          <div className="delete-button">
+            <FontAwesomeIcon className="delete-icon" icon={faTrash} />
+          </div>
+        </li>
+       ))}
+    </>
+  )
+}
 export default Card

@@ -38,6 +38,18 @@ function App() {
       setTasks([...tasks, newTaskObject]);
       setNewTask('');
       setIsFocused(false);
+
+      fetch('http://localhost:5500/tasks', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTaskObject)
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log('Error', error));
     }
   }
 
