@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-library.add(faTrash);
+import { faTrash, faPencil,faPlus } from "@fortawesome/free-solid-svg-icons";
+library.add(faTrash, faPencil, faPlus);
 
 
 import './Card.css'
@@ -31,9 +31,15 @@ const Items = ({ tasks }) => {
     <>
        {tasks.map((item, index) => (
         <li key={index}>
-          <span>{item.task}</span>
-
-          <div className="delete-button">
+          <span>
+            {item.task}
+            <FontAwesomeIcon className="plus-button" icon={faPlus} />
+          </span>
+          
+          <div className="item-button edit-button">
+            <FontAwesomeIcon className="edit-icon" icon={faPencil} />
+          </div>
+          <div className="item-button delete-button">
             <FontAwesomeIcon className="delete-icon" icon={faTrash} />
           </div>
         </li>

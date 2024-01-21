@@ -35,6 +35,7 @@
 .items-wrapper > ul > li > span {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #8DB48E;
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -46,34 +47,48 @@
   animation: none;
 }
 
+/*
 .items-wrapper > ul > li > span:hover {
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
   animation: wiggle 100ms infinite;
   background-color: #A0A0A0;
 }
+ */
 
 @keyframes wiggle {
     0% { transform: rotate(0deg); }
    80% { transform: rotate(0deg); }
-   85% { transform: rotate(1.1deg); }
-   95% { transform: rotate(-1.1deg); }
+   85% { transform: rotate(1deg); }
+   95% { transform: rotate(-1deg); }
   100% { transform: rotate(0deg); }
 }
 
-.delete-button {
+.plus-button {
+  color: #F5F5F5;
+  transition: color 150ms ease;
+  cursor: pointer;
+}
+.plus-button:hover {
+  transform: rotate(45deg);
+}
+.item-button {
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
-.delete-icon {
+.delete-icon, .edit-icon {
   color: #A0A0A0;
+  cursor: pointer;
   transition: color 100ms ease;
 }
 .delete-icon:hover {
   color: #CC0000;
-  cursor: pointer;
+}
+.edit-icon:hover {
+  color: #4D724D;
 }
 
 @media (max-width: 440px) {
