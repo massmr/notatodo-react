@@ -34,7 +34,7 @@ const CardsContainer = ({ tasks,
         <Card 
           category={todoCategory}
           tasks={todoTasks}
-          
+                   
           inputComponent={
             <InputTodo
               handleAddTask={handleAddTask}

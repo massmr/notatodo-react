@@ -61,7 +61,7 @@ function App() {
     setIsFocused(false);
   };
 
-
+  
 
   const [activeCategory, setActiveCategory] = React.useState('todo');
   //callback handler

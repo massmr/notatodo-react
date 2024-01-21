@@ -31,22 +31,27 @@
   align-items: center;
   height: 50px;
   font-size: 20px;
+  overflow: hidden;
   }
-.items-wrapper > ul > li > span {
+.items-wrapper > ul > li > .item-text-zone {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #8DB48E;
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  padding: 0 15px;
   height: 100%;
-  width: 100%;
   overflow: auto;
-  transition: all 150ms ease;
   animation: none;
+  /*responsible of animations*/
+  transition: all 150ms ease;
+  flex-shrink: 0;
+  width: calc(100% - 30px);
+  padding: 0 15px;
 }
-
+.items-wrapper > ul > li > .item-shrinker {
+  flex-shrink: 1;
+}
 /*
 .items-wrapper > ul > li > span:hover {
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
@@ -56,7 +61,7 @@
  */
 
 @keyframes wiggle {
-    0% { transform: rotate(0deg); }
+    0% { transform: rotate(0deg); 
    80% { transform: rotate(0deg); }
    85% { transform: rotate(1deg); }
    95% { transform: rotate(-1deg); }
@@ -71,25 +76,27 @@
 .plus-button:hover {
   transform: rotate(45deg);
 }
-.item-button {
-  width: 50px;
+/*
+.items-wrapper > ul > li > .item-icons-wrapper {
+  width: 100px;
   height: 50px;
   display: flex;
+  flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-.delete-icon, .edit-icon {
-  color: #A0A0A0;
+.edit-icon, .delete-icon {
   cursor: pointer;
   transition: color 100ms ease;
 }
-.delete-icon:hover {
+
+.items-wrapper > ul > li > .delete-icon:hover {
   color: #CC0000;
 }
-.edit-icon:hover {
+.items-wrapper > ul > li > .edit-icon:hover {
   color: #4D724D;
-}
+}*/
 
 @media (max-width: 440px) {
   .card > ul {
